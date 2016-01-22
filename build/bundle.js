@@ -48,11 +48,89 @@
 	
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
+	var nameList = [React.createElement(
+		'h1',
+		null,
+		'朱二狗'
+	), React.createElement(
+		'h1',
+		null,
+		'赵尼玛'
+	)];
+	var HelloMessage = React.createClass({
+		displayName: 'HelloMessage',
 	
+		render: function render() {
+			return React.createElement(
+				'h1',
+				null,
+				'hello ',
+				this.props.name
+			);
+		}
+	});
+	var NoteList = React.createClass({
+		displayName: 'NoteList',
+	
+		render: function render() {
+			return React.createElement(
+				'ol',
+				null,
+				React.Children.map(this.props.children, function (item) {
+					return React.createElement(
+						'li',
+						null,
+						item
+					);
+				})
+			)
+			// <ol>
+			//      {
+			//        React.Children.map(this.props.children, function (child) {
+			//          return <li>{child}</li>;
+			//        })
+			//      }
+			//      </ol>		
+			;
+		}
+	});
 	ReactDOM.render(React.createElement(
-	  'h1',
-	  null,
-	  'Hello React!'
+		NoteList,
+		null,
+		React.createElement(
+			'span',
+			null,
+			'hello'
+		),
+		React.createElement(
+			'span',
+			null,
+			'world'
+		),
+		React.createElement(
+			'span',
+			null,
+			'reacte'
+		),
+		React.createElement(
+			'a',
+			null,
+			'sb'
+		),
+		React.createElement(
+			'div',
+			null,
+			React.createElement(
+				'div',
+				null,
+				'fuck'
+			),
+			React.createElement(
+				'div',
+				null,
+				'bitch'
+			)
+		)
 	), document.getElementById('root'));
 
 /***/ },
