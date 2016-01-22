@@ -60,6 +60,12 @@
 	var HelloMessage = React.createClass({
 		displayName: 'HelloMessage',
 	
+		propTypes: {
+			name: React.PropTypes.number.isRequired
+		},
+		getDefaultProps: function getDefaultProps() {
+			return { name: "赵尼玛" };
+		},
 		render: function render() {
 			return React.createElement(
 				'h1',
@@ -94,44 +100,22 @@
 			;
 		}
 	});
-	ReactDOM.render(React.createElement(
-		NoteList,
-		null,
-		React.createElement(
-			'span',
-			null,
-			'hello'
-		),
-		React.createElement(
-			'span',
-			null,
-			'world'
-		),
-		React.createElement(
-			'span',
-			null,
-			'reacte'
-		),
-		React.createElement(
-			'a',
-			null,
-			'sb'
-		),
-		React.createElement(
-			'div',
-			null,
-			React.createElement(
+	var MyComponent = React.createClass({
+		displayName: 'MyComponent',
+	
+		handleClick: function handleClick() {
+			alert(this.refs.myInputText.value);
+		},
+		render: function render() {
+			return React.createElement(
 				'div',
 				null,
-				'fuck'
-			),
-			React.createElement(
-				'div',
-				null,
-				'bitch'
-			)
-		)
-	), document.getElementById('root'));
+				React.createElement('input', { type: 'text', ref: 'myInputText' }),
+				React.createElement('input', { type: 'button', value: 'click me', onClick: this.handleClick })
+			);
+		}
+	});
+	ReactDOM.render(React.createElement(MyComponent, null), document.getElementById('root'));
 
 /***/ },
 /* 1 */
