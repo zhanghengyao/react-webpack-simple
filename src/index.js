@@ -22,13 +22,6 @@ var NoteList=React.createClass({
 					})
 				}
 				</ol>
-				// <ol>
-			 //      {
-			 //        React.Children.map(this.props.children, function (child) {
-			 //          return <li>{child}</li>;
-			 //        })
-			 //      }
-			 //      </ol>		
 				);
 
 	}
@@ -44,7 +37,21 @@ var MyComponent=React.createClass({
 				</div>
 	}
 })
+var LinkButton=React.createClass({
+	getInitialState:function(){
+		return {likeed:false}
+	},
+	handleClick:function(){
+		this.setState({likeed:!this.state.likeed});
+	},
+	render:function(){
+		var txt = this.state.likeed?"likeed":"unlike";
+		return <p onClick={this.handleClick}>
+					click toggle txt:{txt}
+				</p>
+	}
+})
 ReactDOM.render(
-	<MyComponent />, 
+	<LinkButton />, 
 	document.getElementById('root')
 	);

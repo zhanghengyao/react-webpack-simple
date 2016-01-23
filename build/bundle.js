@@ -89,15 +89,7 @@
 						item
 					);
 				})
-			)
-			// <ol>
-			//      {
-			//        React.Children.map(this.props.children, function (child) {
-			//          return <li>{child}</li>;
-			//        })
-			//      }
-			//      </ol>		
-			;
+			);
 		}
 	});
 	var MyComponent = React.createClass({
@@ -115,7 +107,26 @@
 			);
 		}
 	});
-	ReactDOM.render(React.createElement(MyComponent, null), document.getElementById('root'));
+	var LinkButton = React.createClass({
+		displayName: 'LinkButton',
+	
+		getInitialState: function getInitialState() {
+			return { likeed: false };
+		},
+		handleClick: function handleClick() {
+			this.setState({ likeed: !this.state.likeed });
+		},
+		render: function render() {
+			var txt = this.state.likeed ? "likeed" : "unlike";
+			return React.createElement(
+				'p',
+				{ onClick: this.handleClick },
+				'click toggle txt:',
+				txt
+			);
+		}
+	});
+	ReactDOM.render(React.createElement(LinkButton, null), document.getElementById('root'));
 
 /***/ },
 /* 1 */
